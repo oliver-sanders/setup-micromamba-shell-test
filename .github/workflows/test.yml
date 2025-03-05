@@ -11,7 +11,8 @@ on:
 defaults:
   run:
     # shell: micromamba-shell {0}
-    shell: $MAMBA_EXE run -r $MAMBA_ROOT_PREFIX -n $MAMBA_DEFAULT_ENV bash -eo pipefail {0}
+    # shell: $MAMBA_EXE run -r $MAMBA_ROOT_PREFIX -n $MAMBA_DEFAULT_ENV bash -eo pipefail {0}
+    shell: micromamba-shell 'bash -elo {0}'
 
 jobs:
   test:
