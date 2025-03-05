@@ -10,7 +10,8 @@ on:
 
 defaults:
   run:
-    shell: micromamba-shell /usr/bin/env bash -elo pipefail {0}
+    # shell: micromamba-shell {0}
+    shell: cat {0}
 
 jobs:
   test:
@@ -27,12 +28,15 @@ jobs:
             bash
 
       - name: which bash
+        if: always()
         run: command -v bash || true
 
       - name: shell
+        if: always()
         run: echo $SHELL; echo $-
 
       - name: false
+        if: always()
         run: false
 
       - name: pipefail
