@@ -12,12 +12,21 @@ defaults:
   run:
     # shell: micromamba-shell {0}
     # shell: $MAMBA_EXE run -r $MAMBA_ROOT_PREFIX -n $MAMBA_DEFAULT_ENV bash -eo pipefail {0}
-    shell: micromamba-shell 'bash -elo {0}'
+    # shell: micromamba-shell 'bash -elo {0}'
+    shell: ./scripty {0}
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: setup
+        shell: bash
+        run: |
+          echo '#!/bin/sh' > scripty
+          echo 'chmod +x $1' >> scripty
+          echo 'exec $MAMBA_EXE run -r $MAMBA_ROOT_PREFIX -n $MAMBA_DEFAULT_ENV bash -elo $1' >> scripty
+          chmod +x scripty
+
       - name: Configure Python
         uses: mamba-org/setup-micromamba@v2
         with:
