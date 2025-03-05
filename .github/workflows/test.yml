@@ -24,16 +24,18 @@ jobs:
           post-cleanup: 'all'
           environment-name: meh
           create-args: >-
-            python
+            bash
 
       - name: shell
-        run: echo $SHELL
+        run: echo $SHELL; echo $-
 
       - name: false
         run: false
 
       - name: pipefail
+        if: always()
         run: false | true
 
       - name: undefined
+        if: always()
         run: echo $HOME_FOO
