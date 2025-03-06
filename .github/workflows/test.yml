@@ -36,7 +36,7 @@ jobs:
 
       - name: shell
         if: always()
-        run: echo $SHELL; echo $-
+        run: echo $SHELL; echo $-; env | grep MAMBA; env | grep CONDA
 
       - name: false
         if: always()
