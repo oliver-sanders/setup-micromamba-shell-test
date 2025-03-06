@@ -14,7 +14,7 @@ defaults:
     # shell: $MAMBA_EXE run -r $MAMBA_ROOT_PREFIX -n $MAMBA_DEFAULT_ENV bash -eo pipefail {0}
     # shell: micromamba-shell 'bash -elo {0}'
     # shell: ./scripty {0}
-    shell: $CONDA_PREFIX/bin/bash -elo pipefail {0}
+    shell: exec $CONDA_PREFIX/bin/bash -elo pipefail {0}
 
 jobs:
   test:
