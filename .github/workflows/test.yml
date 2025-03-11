@@ -49,3 +49,16 @@ jobs:
       - name: undefined
         if: always()
         run: echo $HOME_FOO
+
+      - name: default bash shell -> $PATH
+        shell: bash
+        run: |
+          echo "PATH=$PATH"
+          command -v svn || true
+          command -v git || true
+
+      - name: micromamba bash shell -> $PATH
+        run: |
+          echo "PATH=$PATH"
+          command -v svn || true
+          command -v git || true
