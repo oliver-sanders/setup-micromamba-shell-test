@@ -51,6 +51,7 @@ jobs:
         run: echo $HOME_FOO
 
       - name: default bash shell -> $PATH
+        if: always()
         shell: bash
         run: |
           echo "PATH=$PATH"
@@ -58,6 +59,7 @@ jobs:
           command -v git || true
 
       - name: micromamba bash shell -> $PATH
+        if: always()
         run: |
           echo "PATH=$PATH"
           command -v svn || true
